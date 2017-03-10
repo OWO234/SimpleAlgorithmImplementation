@@ -14,7 +14,8 @@ namespace SimpleAlgorithmImplementation
             {
                 Console.Clear();
                 Console.WriteLine(" 1.\tGenerate Fabonacci Series");
-                Console.WriteLine(" 2.\tExit");
+                Console.WriteLine(" 2.\tCalculate Factorial of a Number");
+                Console.WriteLine(" 3.\tExit");
                 Console.WriteLine("Please enter your choice");
                 try
                 {
@@ -37,6 +38,14 @@ namespace SimpleAlgorithmImplementation
                             Console.WriteLine($"Fabonacci series of lenght {len} is {string.Join(", ", numbers.ToArray())}");
                             break;
                         case 2:
+                            Console.WriteLine("\n################# Factorial #################");
+                            Console.WriteLine("\nEnter the number");
+                            int num;
+                            if (!int.TryParse(Console.ReadLine(), out num))
+                            { throw new FormatException(); }
+                            Console.WriteLine($"{num}! => {string.Join(" X ", Enumerable.Range(1, num).Reverse())} = {Factorial(num)}");
+                            break;
+                        case 3:
                             return;
 
                     }
@@ -65,6 +74,18 @@ namespace SimpleAlgorithmImplementation
             else
             {
                 return FabonacciSeries(i - 1) + FabonacciSeries(i - 2);
+            }
+        }
+
+        private static int Factorial(int i)
+        {
+            if ((i == 0) || (i == 1))
+            {
+                return 1;
+            }
+            else
+            {
+                return Factorial(i - 1) * i;
             }
         }
     }
